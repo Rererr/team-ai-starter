@@ -67,8 +67,8 @@ docs、hooks、mcp は `teamai push` の対象外で、通常の commit と PR �
 ## TeamAI と併用するときに知っておくこと
 
 - `teamai.yaml` の初期設定は自動 recall なし、チーム配布 Hook・MCP の自動反映なし、シェル設定への環境変数注入なしです。これらは TeamAI 内蔵の共有案内や利用統計の収集を止める設定ではありません
-- TeamAI はセッション開始ごとに利用統計（スキル利用回数、割り込み・拒否・失敗の回数、トークン量）をこのリポジトリへ push します。会話本文は送りません。止める設定は 0.22.0 に無いため、展開前にメンバーへ説明してください
+- TeamAI はセッション開始ごとに利用統計（スキル利用回数、割り込み・拒否・失敗の回数、トークン量）をこのリポジトリへ push します。会話本文は送りません。止める設定は 0.23.0-beta.8 の時点でも無いため、展開前にメンバーへ説明してください
 - TeamAI の共有案内（friction ヒント）と personal-ai-loop の振り返り案内は同じセッションで並び得ます。日本語の訂正は TeamAI 側の点数に入らないため、日本語のチームではほぼ重なりません。詳細と選択肢は [docs/coexistence.md](docs/coexistence.md) にあります
 
-確認した版: TeamAI 0.22.0（`0ec7b77b`、2026-09-08）。ライセンスは MIT です。
+確認した版: TeamAI 0.22.0（`0ec7b77b`）と 0.23.0-beta.8（いずれも 2026-09-08。CI は両方で e2e を実行）。ライセンスは MIT です。
 参照: [TeamAI 公式](https://github.com/Tencent/teamai-cli)、[設定ガイド](https://github.com/Tencent/teamai-cli/blob/main/docs/usage-guide.md)。

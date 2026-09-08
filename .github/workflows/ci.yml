@@ -9,6 +9,10 @@ on:
 jobs:
   e2e:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 0.22.0 は npm の latest。0.23.0-beta.8 は sharing.contributeHint.enabled と日本語の訂正キーワードを含む最初の版
+        teamai: ["0.22.0", "0.23.0-beta.8"]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
@@ -17,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - run: npm install -g teamai-cli@0.22.0
+      - run: npm install -g teamai-cli@${{ matrix.teamai }}
       - run: python3 scripts/e2e-local.py
 
   gitleaks:

@@ -6,6 +6,10 @@ autoUpdate: false
 sharing:
   recall:
     enabled: false
+  # 共有の案内（/teamai-share-learnings を促す Stop Hook の出力）だけを止める。teamai-cli 0.23.0-beta.8 以降で有効。
+  # 0.22.0 以前では未知のキーとして無視され、案内は出続ける（止めるには hooks/hooks.yaml の builtin.disabled）。
+  contributeHint:
+    enabled: false
   hooks:
     autoApply: false
   mcp:
