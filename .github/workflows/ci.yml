@@ -15,7 +15,7 @@ jobs:
         teamai: ["0.22.0", "0.23.0-beta.8"]
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
       - uses: actions/setup-python@v7
