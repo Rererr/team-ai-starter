@@ -1,0 +1,14 @@
+team: your-team
+description: Reviewed team rules and knowledge
+repo: https://github.com/YOUR-ORG/YOUR-TEAM-REPO
+provider: github
+autoUpdate: false
+sharing:
+  recall:
+    enabled: false
+  hooks:
+    autoApply: false
+  mcp:
+    autoApply: false
+  env:
+    injectShellProfile: false

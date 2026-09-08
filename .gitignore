@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+.teamai/
+*.sqlite3*
+personal.md
+queue.md
+processed.txt
+transcripts/
+backups/
