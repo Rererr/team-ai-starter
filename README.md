@@ -1,7 +1,7 @@
 # team-ai-starter
 
 [TeamAI](https://github.com/Tencent/teamai-cli) で配布する、チームのルールと知識の最小テンプレートです。
-個人の改善は [personal-ai-loop](https://github.com/YOUR-NAME/personal-ai-loop) が担い、このリポジトリはチームで採用した資産だけを持ちます。
+個人の改善は [personal-ai-loop](https://github.com/Rererr/personal-ai-loop) が担い、このリポジトリはチームで採用した資産だけを持ちます。
 会社やプロジェクト固有の情報は含めていません。
 
 ## 構成
@@ -22,9 +22,9 @@
 2. このテンプレートの内容を置き、`teamai.yaml` の `team`、`repo`、`provider` を実際の値にする
 3. デフォルトブランチにレビュー必須の保護を設定する（規約だけでは直接 push を止められない）
 4. `hooks/hooks.yaml` で内蔵 Stop Hook を止めるかを決める（[共存の判断](docs/coexistence.md)）
-5. 個人用リポジトリの公開 URL が決まったら、この README と `docs/coexistence.md` のリンクを差し替える
 
 配布前にローカルで検証できます。外部サービスに触れず、隔離した HOME と自己署名の HTTPS git サーバーで `teamai init` から `doctor` までを流します。
+teamai のほかに Python 3、Git、openssl が要ります。
 
 ```bash
 npm install -g teamai-cli

@@ -1,6 +1,6 @@
 # personal-ai-loop との共存
 
-このリポジトリはチームの共有資産だけを持ち、個人の改善は [personal-ai-loop](https://github.com/YOUR-NAME/personal-ai-loop) に任せます。
+このリポジトリはチームの共有資産だけを持ち、個人の改善は [personal-ai-loop](https://github.com/Rererr/personal-ai-loop) に任せます。
 両方を入れた環境で何が起き、何を選べるかをまとめます。
 確認した TeamAI は 0.22.0（`0ec7b77b`）です。
 
