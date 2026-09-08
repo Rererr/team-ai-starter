@@ -16,7 +16,7 @@ personal-ai-loop は日本語と英語の修正・承認表現を検出してロ
 ## 内蔵 Stop Hook を止める選択
 
 `hooks/hooks.yaml` の `builtin.disabled` に `"Hook dispatch stop"` を加えると、次の `teamai pull` で全メンバーの Stop Hook が外れます。
-共有の案内だけを止める設定は無く、この Hook が担う CLI の更新確認、recall 投票の同期、ダッシュボード報告も止まります。
+共有の案内だけを止める設定は 0.22.0 に無く、この Hook が担う CLI の更新確認、recall 投票の同期、ダッシュボード報告も止まります。案内だけを止める設定は上流へ提案中です（[Tencent/teamai-cli#432](https://github.com/Tencent/teamai-cli/pull/432)）。マージ後は `sharing.contributeHint.enabled: false` で代替できます。
 更新確認は `teamai update`、投票同期は次の `teamai pull` で代替できます。
 
 ## 利用統計の送信
