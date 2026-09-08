@@ -1,0 +1,11 @@
+# チームが配布する Hook と、TeamAI 内蔵 Hook の上書き。
+# `teamai pull` で各メンバーの AI ツールへ反映される（sharing.hooks.autoApply が false なら `teamai hooks inject` で手動反映）。
+hooks: []
+
+builtin:
+  # 個人の振り返り（personal-retro）を唯一の入口にする場合は、下の1行を有効にする。
+  # 内蔵 Stop Hook は「共有の案内」だけでなく CLI の更新確認・recall 投票の同期・ダッシュボード報告も担うため、それらも止まる。
+  # 共有の案内だけを止める設定は 0.22.0 に無い（docs/coexistence.md を参照）。
+  disabled: []
+  # disabled: ["Hook dispatch stop"]
+  overrides: {}
