@@ -3,6 +3,9 @@ description: Reviewed team rules and knowledge
 repo: https://github.com/YOUR-ORG/YOUR-TEAM-REPO
 provider: github
 autoUpdate: false
+# 利用統計（スキル利用回数、割り込み・拒否・失敗の回数、トークン量）のチームリポジトリへの push を止める。teamai-cli 0.24.0 以降で有効。
+# 0.23 以前では未知のキーとして無視され、セッション開始ごとの push は続く。
+usageReport: false
 sharing:
   recall:
     enabled: false

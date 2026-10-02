@@ -103,6 +103,7 @@ def main():
     version = subprocess.run([teamai, "--version"], capture_output=True, text=True).stdout.strip()
     major, minor = map(int, re.match(r"(\d+)\.(\d+)", version).groups())
     hint_setting_supported = (major, minor) >= (0, 23)  # sharing.contributeHint.enabled は 0.23.0-beta.8 から
+    usage_report_supported = (major, minor) >= (0, 24)  # usageReport: false は 0.24.0 から
     # 0.22 は日本語の訂正キーワードを持たない（0.23.0-beta.7 から）ため、案内が出ること自体の確認には英語を使う
     correction = "違う、やり直して" if hint_setting_supported else "that's wrong, redo it"
     with tempfile.TemporaryDirectory(prefix="team-ai-starter-e2e-") as temporary:
@@ -142,6 +143,12 @@ def main():
                       env=env, cwd=home)
             pull = sh(teamai, "pull", env=env, cwd=home)
             doctor = sh(teamai, "doctor", env=env, cwd=home)
+            # 利用統計は利用イベントがあるときだけ送られるため、1 件仕込んでから pull で送信の有無を見る
+            (home / ".teamai/usage.jsonl").write_text(json.dumps(
+                {"skill": "teamai", "timestamp": datetime.now(timezone.utc).isoformat(), "tool": "claude"}) + "\n",
+                encoding="utf-8")
+            sh(teamai, "pull", env=env, cwd=home)
+            stats_pushed = "stats/" in sh("git", "-C", str(remote), "log", "--all", "--name-only", "--format=", env=env).stdout
 
             def publish(message):
                 # init がメンバー登録を main へ push しているため、先に取り込む
@@ -174,6 +181,8 @@ def main():
             "personal-* スキルを配布していない": not list((home / ".claude/skills").glob("personal-*")),
             "Claude Code に内蔵 Hook が登録": "hook-dispatch" in (home / ".claude/settings.json").read_text(),
             "doctor が全通過": "All checks passed" in doctor.stdout,
+            ("usageReport: false で利用統計が push されない" if usage_report_supported
+             else f"usageReport 未対応の {version} では利用統計が push される"): stats_pushed == (not usage_report_supported),
             ("日本語の訂正" if hint_setting_supported else "英語の訂正") + "で共有の案内が出る（contributeHint.enabled: true）": hint_with_setting_on,
             ("contributeHint.enabled: false で共有の案内が止まる" if hint_setting_supported
              else f"contributeHint 未対応の {version} では案内が出続ける"): hint_with_setting_off == (not hint_setting_supported),
